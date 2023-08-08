@@ -4,7 +4,7 @@ body {
 
 .body {
     height: 100vh;
-    background-image: url('/images/6574814.jpg');
+    background-image: url('https://thomasosho.github.io/AfriEd/images/6574814.jpg');
     display: flex;
     justify-content: center;
     align-items: center;
