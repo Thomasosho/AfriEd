@@ -61,55 +61,156 @@ let word = "100 divided by 23.1 "
 //   console.log('Radio', result.toFixed(2))
 // }
 
-function basicmath() {
-  // Define the mapping of operators in words to their corresponding symbols
-  const operators = {
-      'plus': '+',
-      'minus': '-',
-      'times': '*',
-      'divided by': '/'
-  };
+// function basicmath() {
+//   // Define the mapping of operators in words to their corresponding symbols
+//   const operators = {
+//       'plus': '+',
+//       'minus': '-',
+//       'times': '*',
+//       'divided by': '/'
+//   };
 
-  // Split the input string into an array of lowercase words
-  const words = word.toLowerCase().split(' ');
+//   // Split the input string into an array of lowercase words
+//   const words = word.toLowerCase().split(' ');
   
-  // Find the index of the operator word in the words array
-  const operatorIndex = words.findIndex(w => Object.keys(operators).includes(w));
+//   // Find the index of the operator word in the words array
+//   const operatorIndex = words.findIndex(w => Object.keys(operators).includes(w));
 
-  // Check if the operator index is invalid or if the operands are missing
-  if (operatorIndex === -1 || operatorIndex === 0 || operatorIndex === words.length - 1) {
-      return null; // Return null for invalid input
-  }
+//   // Check if the operator index is invalid or if the operands are missing
+//   if (operatorIndex === -1 || operatorIndex === 0 || operatorIndex === words.length - 1) {
+//       return null; // Return null for invalid input
+//   }
 
-  // Retrieve the corresponding operator symbol based on the operator word
-  const operator = operators[words[operatorIndex]];
+//   // Retrieve the corresponding operator symbol based on the operator word
+//   const operator = operators[words[operatorIndex]];
   
-  // Parse the operands (numbers) on either side of the operator
-  const num1 = parseFloat(words[operatorIndex - 1]);
-  const num2 = parseFloat(words[operatorIndex + 1]);
+//   // Parse the operands (numbers) on either side of the operator
+//   const num1 = parseFloat(words[operatorIndex - 1]);
+//   const num2 = parseFloat(words[operatorIndex + 1]);
 
-  // Check if any of the operands are not valid numbers
-  if (isNaN(num1) || isNaN(num2)) {
-      return null; // Return null for invalid input
-  }
+//   // Check if any of the operands are not valid numbers
+//   if (isNaN(num1) || isNaN(num2)) {
+//       return null; // Return null for invalid input
+//   }
 
-  // Calculate the result based on the operator using if statements
-  let result;
-  if (operator === '+') {
-      result = num1 + num2;
-  } else if (operator === '-') {
-      result = num1 - num2;
-  } else if (operator === '*') {
-      result = num1 * num2;
-  } else if (operator === '/') {
-      result = num1 / num2;
-  } else {
-      return null; // Invalid operator
-  }
+//   // Calculate the result based on the operator using if statements
+//   let result;
+//   if (operator === '+') {
+//       result = num1 + num2;
+//   } else if (operator === '-') {
+//       result = num1 - num2;
+//   } else if (operator === '*') {
+//       result = num1 * num2;
+//   } else if (operator === '/') {
+//       result = num1 / num2;
+//   } else {
+//       return null; // Invalid operator
+//   }
   
-  // Return the formatted result as a string with two decimal places
-  return result.toFixed(2);
+//   // Return the formatted result as a string with two decimal places
+//   return result.toFixed(2);
+// }
+
+
+const oshoThomas = {
+    name: 'James Osho Thomas',
+    age: '30',
+    hobbies: ['football', 'games', 'coding'],
+    state: 'Edo',
+    relationship: 'Single',
+    zodiacSign: 'Taurus',
+    sibling: '2',
+    country: 'Nigeria',
+    programmingLanguages: ['PHP', 'JavaScript', 'HTML', 'Python'],
+    shoeSize: '43',
+    shirtSize: 'large'
 }
 
-console.log(basicmath());
+const jude = {
+    name: "Adinoyi Jude Ohiani",
+    age: "32",
+    hobbies: ["farming", "music", "codin", "hangout"],
+    state: "Kogi",
+    relationship: "Singl",
+    zodiacSign: "Tauru",
+    sibling: "7",
+    country: "Nigeri",
+    programmingLanguages: [ "jjj"],
+    shoeSize: "45",
+    shirtSize: "extra large"
+}
+
+// const jude = {
+//     name: "Adinoyi Jude Ohiani",
+//     age: "30",
+//     hobbies: ["farming", "music", "coding", "hangout"],
+//     state: "Kogi",
+//     relationship: "Single",
+//     zodiacSign: "Taurus",
+//     sibling: "7",
+//     country: "Nigeria",
+//     programmingLanguages: [ "JavaScript", "HTML", "Python"],
+//     shoeSize: "45",
+//     shirtSize: "extra large"
+// }
+
+function attributes() {
+    const similarities = [];
+
+    for (const attribute in oshoThomas) {
+      if (oshoThomas.hasOwnProperty(attribute) && jude.hasOwnProperty(attribute)) {
+        if (Array.isArray(oshoThomas[attribute])) {
+          // Compare arrays
+          const commonValues = oshoThomas[attribute].filter(value => jude[attribute].includes(value));
+          if (commonValues.length > 0) {
+            similarities.push(attribute);
+          }
+        } else {
+            if (oshoThomas[attribute] === jude[attribute] === true) {
+                similarities.push(attribute);
+            }
+        }
+      } else{
+            return 'No User Attributes Found 🥶!'
+        }
+    }
+
+    if (similarities.length < 1) {
+        return 'Sorry my Gee, No similarities found 🥶'
+    } else {
+        return similarities;
+    }
+  }
+
+// console.log(attributes());
+
+function attributesWithObj() {
+    const commonAttributesObj = {};
+
+    for (const attribute in oshoThomas) {
+        if (oshoThomas.hasOwnProperty(attribute) && jude.hasOwnProperty(attribute)) {
+            if (Array.isArray(oshoThomas[attribute])) {
+                const commonValues = oshoThomas[attribute].filter(value => jude[attribute].includes(value));
+                // console.log('osho', commonValues);
+                if (commonValues.length > 0) {
+                    commonAttributesObj[attribute] = commonValues;
+                }
+            } else {
+                if (oshoThomas[attribute] === jude[attribute]) {
+                    commonAttributesObj[attribute] = oshoThomas[attribute];
+                }
+            }
+        }
+    }
+
+    // console.log(commonAttributesObj);
+
+    if (Object.keys(commonAttributesObj).length === 0) {
+        return 'Sorry my Gee, No similarities found 🥶';
+    } else {
+        return commonAttributesObj;
+    }
+}
+
+console.log('As obj with attributes: ', attributesWithObj(), 'As an array: ', attributes());
    
